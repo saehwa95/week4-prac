@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+const App = () => {
+  const [number, setNumber] = useState(0);
+  const onChangeHandler = (e) => {
+    //이벤트 핸들러가 자동으로 문자열로 설정되어 있는 상태
+    const { value } = e.target;
+    // 숫자형 변환을 위해 + 붙여줌
+    setNumber(+value);
+  };
+  console.log(number);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input type="number" onChange={onChangeHandler} />
+      <button>더하기</button>
+      <button>빼기</button>
     </div>
   );
-}
+};
 
 export default App;
